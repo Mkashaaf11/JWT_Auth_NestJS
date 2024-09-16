@@ -7,18 +7,23 @@ import { AuthService } from './auth.service';
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
-  @Post('user/login')
+  @Post('/user/login')
   async userLogin(@Body() loginDto: loginDto) {
     return this.authService.userLogin(loginDto);
   }
 
-  @Post('user/signup')
+  @Post('/user/signup')
   async userSignup(@Body() createUserDto: createUserDto) {
     return this.authService.registerUser(createUserDto);
   }
 
-  @Post('admin/login')
+  @Post('/admin/login')
   async adminLogin(@Body() loginDto: loginDto) {
     return this.authService.adminLogin(loginDto);
+  }
+
+  @Post('/admin/signup')
+  async adminSignup(@Body() createUserDto: createUserDto) {
+    return this.authService.registerAdmin(createUserDto);
   }
 }

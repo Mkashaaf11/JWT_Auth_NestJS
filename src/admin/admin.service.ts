@@ -29,4 +29,18 @@ export class AdminService {
     Object.assign(admin, updatedAdmin);
     return await this.adminRepository.save(admin);
   }
+
+  async registerAdmin(createUserDto: AdminInfoDto): Promise<Admin> {
+    // Check if the username already exists
+    const existingUser = await this.adminRepository.findOneBy({
+      name: createUserDto.username,
+    });
+    if (existingUser) {
+      throw new BadRequestException('Username already exists');
+    }
+
+    // Create and save the new user
+    const admin = this.adminRepository.create(createUserDto);
+    return this.adminRepository.save(admin);
+  }
 }

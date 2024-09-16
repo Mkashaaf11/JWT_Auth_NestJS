@@ -5,7 +5,7 @@ export class Admin {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({ type: 'varchar', length: 225, unique: true })
+  @Column({ type: 'varchar', length: 225, unique: true, nullable: false })
   name: string;
 
   @Column({ type: 'varchar', length: 225, nullable: false })

@@ -7,7 +7,7 @@ import { JWTPayload } from '../interface/jwt-payload.interface';
 import { UserService } from 'src/user/user.service';
 
 @Injectable()
-export class UserJWTStrategy extends PassportStrategy(Strategy) {
+export class UserJWTStrategy extends PassportStrategy(Strategy, 'jwt-user') {
   constructor(
     private configservice: ConfigService,
     private userService: UserService,

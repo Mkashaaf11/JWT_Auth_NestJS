@@ -72,4 +72,12 @@ export class AuthService {
       password: hashedPassowrd,
     });
   }
+
+  async registerAdmin(createUserDto: createUserDto): Promise<void> {
+    const hashedPassowrd = await bcrypt.hash(createUserDto.password, 10);
+    await this.adminService.registerAdmin({
+      ...createUserDto,
+      password: hashedPassowrd,
+    });
+  }
 }

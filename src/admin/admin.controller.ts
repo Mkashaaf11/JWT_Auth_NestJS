@@ -1,8 +1,10 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, UseGuards } from '@nestjs/common';
 import { AdminService } from './admin.service';
 import { UserService } from 'src/user/user.service';
+import { AdminAuthGuard } from 'src/auth/Guards/admin.guard';
 
 @Controller('admin')
+@UseGuards(AdminAuthGuard)
 export class AdminController {
   constructor(
     private readonly userService: UserService,
